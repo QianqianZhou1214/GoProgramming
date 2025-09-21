@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io"
+	"io/ioutil"
 	"os"
 )
 
@@ -15,11 +15,14 @@ func main() {
 			continue
 		}
 
-		if _, err := io.Copy(os.Stdout, file); err != nil {
+		data, err := ioutil.ReadAll(file)
+
+		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			continue
 		}
 
+		fmt.Println("The file has", len(data), "bytes")
 		file.Close()
 	}
 }
