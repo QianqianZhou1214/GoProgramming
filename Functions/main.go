@@ -4,15 +4,15 @@ import (
 	"fmt"
 )
 
-func do(b []int) int {
-	b[0] = 0
-	fmt.Printf("b@ %p\n", b)
-	return b[1]
+func do(m1 map[int]int) {
+	m1[3] = 0
+	m1 = make(map[int]int)
+	m1[4] = 4
+	fmt.Println("m1", m1)
 }
 func main() {
-	a := []int{1, 2, 3} //slice
-	fmt.Printf("a@ %p\n", a)
-	v := do(a)
+	m := map[int]int{4: 1, 7: 2, 8: 3}
+	do(m)
 
-	fmt.Println(a, v)
+	fmt.Println("m", m)
 }
