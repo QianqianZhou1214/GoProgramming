@@ -4,12 +4,12 @@ import (
 	"fmt"
 )
 
-func do(b [3]int) int {
+func do(b []int) int {
 	b[0] = 0
 	return b[1]
 }
 func main() {
-	a := [3]int{1, 2, 3}
+	a := []int{1, 2, 3} //slice
 	v := do(a)
 
 	fmt.Println(a, v)
