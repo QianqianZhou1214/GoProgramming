@@ -16,4 +16,5 @@ func main() {
 	fmt.Printf("%d, %d, %T, %5t, %#[3]v\n", len(u), cap(u), u, u == nil)
 	fmt.Printf("%d, %d, %T, %5t, %#[3]v\n", len(v), cap(v), v, v == nil)
 
+	// for slice, len is the len of value inside, cap is the cap of this slice
 }
