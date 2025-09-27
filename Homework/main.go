@@ -45,7 +45,7 @@ func main() {
 	doc, err := html.Parse(bytes.NewReader([]byte(raw)))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Parse failed: %s\n", err)
-		os.Exit(1)
+		os.Exit(-1)
 	}
 	words, pics := countWordsAndImages(doc)
 	fmt.Printf("Found %d words and %d pics\n", words, pics)
