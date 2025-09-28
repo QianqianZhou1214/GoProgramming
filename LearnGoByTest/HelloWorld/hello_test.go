@@ -20,6 +20,12 @@ func TestHello(t *testing.T) {
 		assertCorrectMessage(t, got, want)
 	})
 
+	t.Run("in French", func(t *testing.T) {
+		got := Hello("Eva", "French")
+		want := "Bonjour, Eva"
+		assertCorrectMessage(t, got, want)
+	})
+
 }
 func assertCorrectMessage(t testing.TB, got, want string) {
 	t.Helper() // tell the test suite this method is a helper, then the line number reported will
