@@ -16,7 +16,8 @@ func TestHello(t *testing.T) {
 
 }
 func assertCorrectMessage(t testing.TB, got, want string) {
-	t.Helper()
+	t.Helper() // tell the test suite this method is a helper, then the line number reported will
+	// be in our func call rather than inside test helper.
 	if got != want {
 		t.Errorf("got %q, want %q", got, want)
 	}
