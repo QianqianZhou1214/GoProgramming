@@ -12,7 +12,9 @@ func TestRepeat(t *testing.T) {
 }
 
 func BenchmarkRepeat(b *testing.B) {
+	// setup
 	for b.Loop() {
 		Repeat("a")
 	}
+	// cleanup
 }
