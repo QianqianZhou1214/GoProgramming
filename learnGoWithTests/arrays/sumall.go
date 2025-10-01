@@ -14,3 +14,12 @@ func SumAll(numbersToSum ...[]int) []int { // this is a Variadic function
 
 // make([]int, 0, 5): allows to create a slice with a starting capacity of the len(), which is the number of elements.
 // capacity(5) is the number of elements it can hold in underlying array.
+
+func SumAllTails(numbersToSum ...[]int) []int {
+	var sums []int
+	for _, numbers := range numbersToSum {
+		tail := numbers[1:]
+		sums = append(sums, Sum(tail))
+	}
+	return sums
+}
