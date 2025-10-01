@@ -6,9 +6,12 @@ func SumAll(numbersToSum ...[]int) []int { // this is a Variadic function
 	lengthOfNumbers := len(numbersToSum)
 	sums := make([]int, lengthOfNumbers)
 	for i, numbers := range numbersToSum {
-		sums[i] = Sum(numbers)
+		sums[i] = Sum(numbers) //indexing slice
 	}
 	return sums
 }
 
 // fmt.Println() is a common variadic function (with any number of trailing arguments)
+
+// make([]int, 0, 5): allows to create a slice with a starting capacity of the len(), which is the number of elements.
+// capacity(5) is the number of elements it can hold in underlying array.
