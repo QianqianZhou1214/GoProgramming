@@ -5,8 +5,8 @@ func SumAll(numbersToSum ...[]int) []int { // this is a Variadic function
 	//which means we can use len() and iterates over it with range.
 	lengthOfNumbers := len(numbersToSum)
 	sums := make([]int, lengthOfNumbers)
-	for i, numbers := range numbersToSum {
-		sums[i] = Sum(numbers) //indexing slice
+	for _, numbers := range numbersToSum {
+		sums = append(sums, Sum(numbers))
 	}
 	return sums
 }
