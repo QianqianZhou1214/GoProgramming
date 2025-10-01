@@ -3,10 +3,9 @@ package arrays
 func SumAll(numbersToSum ...[]int) []int { // this is a Variadic function
 	// the type of numbersToSum is equivalent to []int,
 	//which means we can use len() and iterates over it with range.
-	lengthOfNumbers := len(numbersToSum)
-	sums := make([]int, lengthOfNumbers)
+	var sums []int
 	for _, numbers := range numbersToSum {
-		sums = append(sums, Sum(numbers))
+		sums = append(sums, Sum(numbers)) //this returns a new slice to avoid runtime error when you are out of bound.
 	}
 	return sums
 }
