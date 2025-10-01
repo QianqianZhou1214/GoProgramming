@@ -39,6 +39,9 @@ func TestSumAll(t *testing.T) {
 
 func TestSumAllTails(t *testing.T) {
 	checkSums := func(t testing.TB, got, want []int) {
+		// Assign a func to a variable,
+		//this technique can be useful when you want to bind a function to other local variables
+		//in "scope" (e.g between some {}). It also allows you to reduce the surface area of your API.
 		t.Helper()
 		if !reflect.DeepEqual(got, want) {
 			t.Errorf("got %v want %v", got, want)
