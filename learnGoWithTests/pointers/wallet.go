@@ -12,5 +12,6 @@ func (w *Wallet) Deposit(amount int) {
 }
 
 func (w *Wallet) Balance() int {
-	return w.balance
+	return w.balance // can be (*w).balance, but Go permits us to write w.balance.
+	// It's called struct pointer.
 }
