@@ -26,6 +26,7 @@ func (w *Wallet) Balance() Bitcoin {
 	// It's called struct pointer.
 }
 
-func (w *Wallet) Withdraw(amount Bitcoin) {
+func (w *Wallet) Withdraw(amount Bitcoin) error {
 	w.balance -= amount
+	return nil
 }
