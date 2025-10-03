@@ -1,5 +1,7 @@
 package structs
 
+import "math"
+
 type Rectangle struct { // A struct is a named collection of fields where you can store data.
 	Width  float64
 	Height float64
@@ -10,7 +12,8 @@ func Perimeter(rectangle Rectangle) float64 {
 }
 
 func (r Rectangle) Area() float64 {
-	return 0
+	// r: receiver
+	return r.Width * r.Height
 }
 
 type Circle struct {
@@ -18,5 +21,5 @@ type Circle struct {
 }
 
 func (c Circle) Area() float64 {
-	return 0
+	return math.Pi * c.Radius * c.Radius
 }
