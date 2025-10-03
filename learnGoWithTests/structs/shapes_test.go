@@ -29,7 +29,7 @@ func TestArea(t *testing.T) {
 		got := Area(circle)
 		want := 314.1592653589793
 		if got != want {
-			t.Errorf("got %.2f want %.2f", got, want)
+			t.Errorf("got %g want %g", got, want)
 		}
 	})
 
