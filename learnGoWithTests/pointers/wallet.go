@@ -2,7 +2,7 @@ package pointers
 
 import "fmt"
 
-type Bitcoin int
+type Bitcoin int // Go allows you to create new types from existing ones.
 type Wallet struct {
 	balance Bitcoin
 }
