@@ -16,20 +16,23 @@ func TestPerimeter(t *testing.T) {
 
 func TestArea(t *testing.T) {
 	//Table driven tests
-	areaTests := []struct { //slice of struct
+	areaTests := []struct {
+		name  string  //slice of struct
 		shape Shape   //field
 		want  float64 //field
 	}{
 		// fill slice with cases
-		{Rectangle{12, 6}, 72.0},
-		{Circle{10}, 314.1592653589793},
-		{Triangle{12, 6}, 36.0},
+		{"Rectangle", Rectangle{12, 6}, 72.0},
+		{"Circle", Circle{10}, 314.1592653589793},
+		{"Triangle", Triangle{12, 6}, 36.0},
 	}
 	for _, tt := range areaTests {
-		got := tt.shape.Area()
-		if got != tt.want {
-			t.Errorf("got %g want %g", got, tt.want)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			got := tt.shape.Area()
+			if got != tt.want {
+				t.Errorf("%#v got %g want %g", tt.name, got, tt.want)
+			}
+		})
 	}
 
 	checkArea := func(t testing.TB, shape Shape, want float64) {
