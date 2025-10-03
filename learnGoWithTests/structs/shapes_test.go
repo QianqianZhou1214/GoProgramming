@@ -4,11 +4,6 @@ import (
 	"testing"
 )
 
-type Rectangle struct { // A struct is a named collection of fields where you can store data.
-	Width  float64
-	Height float64
-}
-
 func TestPerimeter(t *testing.T) {
 	rectangle := Rectangle{10, 10}
 	got := Perimeter(rectangle)
