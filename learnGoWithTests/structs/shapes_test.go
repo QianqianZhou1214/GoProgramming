@@ -23,6 +23,7 @@ func TestArea(t *testing.T) {
 		// fill slice with cases
 		{Rectangle{12, 6}, 72.0},
 		{Circle{10}, 314.1592653589793},
+		{Triangle{12, 6}, 36.0},
 	}
 	for _, tt := range areaTests {
 		got := tt.shape.Area()
@@ -30,6 +31,7 @@ func TestArea(t *testing.T) {
 			t.Errorf("got %g want %g", got, tt.want)
 		}
 	}
+
 	checkArea := func(t testing.TB, shape Shape, want float64) {
 		t.Helper() //our helper does not need to concern whether it's a circle or a rectangle.
 		got := shape.Area()
