@@ -3,6 +3,15 @@ package pointers
 import "fmt"
 
 type Bitcoin int // Go allows you to create new types from existing ones.
+
+type Stringer interface {
+	String() string
+}
+
+func (b Bitcoin) String() string {
+	return fmt.Sprintf("%d BTC", b)
+}
+
 type Wallet struct {
 	balance Bitcoin
 }
