@@ -4,12 +4,12 @@ import "fmt"
 
 type Bitcoin int // Go allows you to create new types from existing ones.
 
-type Stringer interface {
+type Stringer interface { // interface defined in fmt package
 	String() string
 }
 
 func (b Bitcoin) String() string {
-	return fmt.Sprintf("%d BTC", b)
+	return fmt.Sprintf("%d BTC", b) // let you define how your type is printed.
 }
 
 type Wallet struct {
