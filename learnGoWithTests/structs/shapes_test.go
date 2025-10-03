@@ -1,7 +1,6 @@
 package structs
 
 import (
-	"sync"
 	"testing"
 )
 
