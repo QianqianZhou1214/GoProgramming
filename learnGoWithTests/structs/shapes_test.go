@@ -15,8 +15,23 @@ func TestPerimeter(t *testing.T) {
 }
 
 func TestArea(t *testing.T) {
+	//Table driven tests
+	areaTests := []struct { //slice of struct
+		shape Shape   //field
+		want  float64 //field
+	}{
+		// fill slice with cases
+		{Rectangle{12, 6}, 72.0},
+		{Circle{10}, 314.1592653589793},
+	}
+	for _, tt := range areaTests {
+		got := tt.shape.Area()
+		if got != tt.want {
+			t.Errorf("got %g want %g", got, tt.want)
+		}
+	}
 	checkArea := func(t testing.TB, shape Shape, want float64) {
-		t.Helper()
+		t.Helper() //our helper does not need to concern whether it's a circle or a rectangle.
 		got := shape.Area()
 		if got != want {
 			t.Errorf("got %g want %g", got, want)
