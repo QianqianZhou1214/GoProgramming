@@ -29,9 +29,11 @@ func (w *Wallet) Balance() Bitcoin {
 	// It's called struct pointer.
 }
 
+var ErrInsufficientFunds = errors.New("can't withdraw, insufficient funds")
+
 func (w *Wallet) Withdraw(amount Bitcoin) error {
 	if amount > w.balance {
-		return errors.New("cannot withdraw balance: insufficient funds")
+		return ErrInsufficientFunds
 	}
 	w.balance -= amount
 	return nil
