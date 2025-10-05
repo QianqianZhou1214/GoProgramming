@@ -13,13 +13,12 @@ func TestSearch(t *testing.T) {
 	})
 
 	t.Run("unknown word", func(t *testing.T) {
-		_, err := dictionary.Search("unknown")
-		want := "could not find the word you were looking for"
-		if err == nil {
+		_, got := dictionary.Search("unknown")
+		if got == nil {
 			t.Fatal("expected to get an error")
 		}
 
-		assertStrings(t, err.Error(), want)
+		assertError(t, got, ErrNotFound)
 		// error is not nil, use .Error() to get string which we can pass to asset()
 	})
 
@@ -29,5 +28,12 @@ func assertStrings(t testing.TB, got, want string) {
 	t.Helper()
 	if got != want {
 		t.Errorf("got %q, want %q", got, want)
+	}
+}
+
+func assertError(t *testing.T, got, want error) {
+	t.Helper()
+	if got != want {
+		t.Errorf("got error %q, want %q", got, want)
 	}
 }
