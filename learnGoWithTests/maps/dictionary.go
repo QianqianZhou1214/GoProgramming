@@ -37,3 +37,7 @@ func (d Dictionary) Add(word, definition string) error {
 	return nil
 	// A map value is a pointer to a runtime.hmap structure.
 }
+
+func (d Dictionary) Update(word, definition string) {
+
+}
