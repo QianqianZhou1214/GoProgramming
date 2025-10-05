@@ -6,8 +6,9 @@ type Dictionary map[string]string
 // do make map: var dictionary = map[string]string{} OR var dictionary = make(map[string]string)
 
 const (
-	ErrNotFound   = DictionaryError("could not find the word you were looking for")
-	ErrWordExists = DictionaryError("cannot add word because it already exists")
+	ErrNotFound         = DictionaryError("could not find the word you were looking for")
+	ErrWordExists       = DictionaryError("cannot add word because it already exists")
+	ErrWordDoesNotExist = DictionaryError("cannot perform operation on word because it does not exist")
 )
 
 type DictionaryError string
@@ -38,6 +39,16 @@ func (d Dictionary) Add(word, definition string) error {
 	// A map value is a pointer to a runtime.hmap structure.
 }
 
-func (d Dictionary) Update(word, definition string) {
-	d[word] = definition
+func (d Dictionary) Update(word, definition string) error {
+	_, err := d.Search(word)
+	switch err {
+	case ErrNotFound:
+		return ErrWordDoesNotExist
+	case nil:
+		d[word] = definition
+	default:
+		return err
+
+	}
+	return nil
 }
