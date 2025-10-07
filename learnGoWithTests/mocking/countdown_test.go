@@ -14,6 +14,7 @@ func TestCountdown(t *testing.T) {
 2
 1
 Go!`
+	// backtick is another way to create String but lets you include things like new lines.
 
 	if got != want {
 		t.Errorf("got %q, want %q", got, want)
