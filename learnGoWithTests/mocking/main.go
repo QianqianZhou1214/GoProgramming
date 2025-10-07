@@ -42,7 +42,7 @@ func (s *SpySleeper) Sleep() {
 func Countdown(out io.Writer, sleeper Sleeper) {
 	for i := countdownStart; i > 0; i-- {
 		fmt.Fprintln(out, i)
-		time.Sleep(1 * time.Second)
+		sleeper.Sleep()
 	}
 	fmt.Fprintf(out, finalWord)
 }
