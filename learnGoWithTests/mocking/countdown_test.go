@@ -7,24 +7,29 @@ import (
 )
 
 func TestCountdown(t *testing.T) {
-	buffer := &bytes.Buffer{}
-	spySleeper := &SpySleeper{}
+	t.Run("prints 3 to Go!", func(t *testing.T) {
+		buffer := &bytes.Buffer{}
+		spySleeper := &SpySleeper{}
 
-	Countdown(buffer, spySleeper)
-	got := buffer.String()
-	want := `3
+		Countdown(buffer, spySleeper)
+		got := buffer.String()
+		want := `3
 2
 1
 Go!`
-	// backtick is another way to create String but lets you include things like new lines.
+		// backtick is another way to create String but lets you include things like new lines.
 
-	if got != want {
-		t.Errorf("got %q, want %q", got, want)
-	}
+		if got != want {
+			t.Errorf("got %q, want %q", got, want)
+		}
+	})
 
-	if spySleeper.Calls != 3 {
-		t.Errorf("not enough calls to sleeper, want 3 got %d", spySleeper.Calls)
-	}
+	/*
+		if spySleeper.Calls != 3 {
+			t.Errorf("not enough calls to sleeper, want 3 got %d", spySleeper.Calls)
+		}
+
+	*/
 
 	t.Run("sleep before every print", func(t *testing.T) {
 		spySleepPrinter := &SpyCountdownOperations{}
