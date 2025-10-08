@@ -7,14 +7,6 @@ import (
 	"time"
 )
 
-type DefaultSleeper struct{}
-
-func (d *DefaultSleeper) Sleep() {
-	time.Sleep(1 * time.Second)
-}
-
-//for main
-
 const finalWord = "Go!"
 const countdownStart = 3
 
