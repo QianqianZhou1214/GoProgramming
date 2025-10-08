@@ -32,8 +32,8 @@ type Sleeper interface {
 func Countdown(out io.Writer, sleeper Sleeper) {
 	//Countdown receives an output target.
 	for i := countdownStart; i > 0; i-- {
-		sleeper.Sleep()
 		fmt.Fprintln(out, i)
+		sleeper.Sleep()
 	}
 	fmt.Fprintf(out, finalWord)
 }
