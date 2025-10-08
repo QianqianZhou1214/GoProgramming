@@ -85,5 +85,5 @@ func TestConfigurableSleeper(t *testing.T) {
 }
 
 func (c *ConfigurableSleeper) Sleep() {
-
+	c.sleep(c.duration)
 }
