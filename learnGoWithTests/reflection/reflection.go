@@ -9,6 +9,9 @@ func walk(x interface{}, fn func(input string)) {
 		if field.Kind() == reflect.String {
 			fn(field.String())
 		}
+		if field.Kind() == reflect.Struct {
+			walk(field.Interface(), fn)
+		}
 	}
 	//field := val.Field(0) //use first and only field unsafe because what if there is not fields
 	//fn(field.String())    // assumed the type is string, what if other than string
