@@ -18,6 +18,10 @@ func walk(x interface{}, fn func(input string)) {
 		numberOfValues = val.Len()
 		getField = val.Index
 	}
+
+	for i := 0; i < numberOfValues; i++ {
+		walk(getField(i).Interface(), fn)
+	}
 	/*
 		if val.Kind() == reflect.Slice {
 			for i := 0; i < val.Len(); i++ {
