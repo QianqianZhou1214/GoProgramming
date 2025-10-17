@@ -21,7 +21,7 @@ func walk(x interface{}, fn func(input string)) {
 
 func getValue(x interface{}) reflect.Value {
 	val := reflect.ValueOf(x)
-	if val.Kind() != reflect.Pointer {
+	if val.Kind() == reflect.Pointer {
 		val = val.Elem()
 	}
 	return val
