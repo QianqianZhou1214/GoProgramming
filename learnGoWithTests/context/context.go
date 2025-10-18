@@ -28,3 +28,14 @@ func Server(store Store) http.HandlerFunc {
 
 	}
 }
+
+/*
+client  ----->  Server(store)
+                  |
+                  | starts goroutine --> store.Fetch()
+                  |
+                  | listen for two things:
+                  |    1. data ready  --> send response
+                  |    2. ctx.Done()  --> cancel store
+
+*/
