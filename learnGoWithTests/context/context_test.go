@@ -30,6 +30,7 @@ func TestServer(t *testing.T) {
 		request := httptest.NewRequest(http.MethodGet, "/", nil)
 
 		cancellingCtx, cancel := context.WithCancel(request.Context())
+		// WithCancel returns two values: cancellingCtx is a context.Context with cancel function, cancel is a function
 		time.AfterFunc(5*time.Millisecond, cancel)
 		request = request.WithContext(cancellingCtx)
 
