@@ -12,6 +12,11 @@ type Counter struct {
 
 // Mutex: ensuring only one goroutine can increment the counter at a time
 
+// NewCounter returns a new Counter.
+func NewCounter() *Counter {
+	return &Counter{}
+}
+
 func (c *Counter) Inc() {
 	c.mu.Lock()
 	defer c.mu.Unlock()
