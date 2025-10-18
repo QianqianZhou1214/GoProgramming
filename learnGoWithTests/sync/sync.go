@@ -8,6 +8,8 @@ type Counter struct {
 	value int
 }
 
+// do not embedding types, otherwise the methods will become part of public interface
+
 // Mutex: ensuring only one goroutine can increment the counter at a time
 
 func (c *Counter) Inc() {
