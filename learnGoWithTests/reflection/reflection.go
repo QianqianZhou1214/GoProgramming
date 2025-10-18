@@ -33,7 +33,7 @@ func walk(x interface{}, fn func(input string)) {
 			}
 		}
 	case reflect.Func:
-		valFnResult := val.Call(nil)
+		valFnResult := val.Call(nil) // calling non args func
 		for _, res := range valFnResult {
 			walkValue(res)
 		}
