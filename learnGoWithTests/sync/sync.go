@@ -3,7 +3,8 @@ package sync
 import "sync"
 
 type Counter struct {
-	mu sync.Mutex //mutual exclusion lock
+	sync.Mutex
+	//mu sync.Mutex //mutual exclusion lock
 	// zero value is unlocked
 	value int
 }
@@ -11,8 +12,10 @@ type Counter struct {
 // Mutex: ensuring only one goroutine can increment the counter at a time
 
 func (c *Counter) Inc() {
-	c.mu.Lock()
-	defer c.mu.Unlock()
+	//c.mu.Lock()
+	//defer c.mu.Unlock()
+	c.Lock()
+	defer c.Unlock()
 	c.value++
 }
 
