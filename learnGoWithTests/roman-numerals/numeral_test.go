@@ -2,6 +2,7 @@ package roman_numerals
 
 import (
 	"fmt"
+	"log"
 	"testing"
 	"testing/quick"
 )
@@ -97,6 +98,10 @@ func TestConvertToArabic(t *testing.T) {
 
 func TestPropertiesOfConversion(t *testing.T) {
 	assertion := func(arabic int) bool {
+		if arabic < 0 || arabic > 3999 {
+			log.Println(arabic)
+			return true
+		}
 		roman := ConvertToRoman(arabic)
 		fromRoman := ConvertToArabic(roman)
 		return fromRoman == arabic
