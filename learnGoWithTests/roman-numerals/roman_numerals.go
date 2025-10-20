@@ -1,7 +1,9 @@
 package roman_numerals
 
 import (
+	"fmt"
 	"strings"
+	"testing"
 )
 
 type RomanNumeral struct {
@@ -57,4 +59,15 @@ func ConvertToRoman(arabic int) string {
 		return result.String()
 
 	*/
+}
+
+func TestConvertToArabic(t *testing.T) {
+	for _, test := range cases[:1] {
+		t.Run(fmt.Sprintf("%q gets converted to %d", test.Roman, test.Arabic), func(t *testing.T) {
+			got := ConvertToArabic(test.Roman)
+			if got != test.Arabic {
+				t.Errorf("got %d, want %d", got, test.Arabic)
+			}
+		})
+	}
 }
