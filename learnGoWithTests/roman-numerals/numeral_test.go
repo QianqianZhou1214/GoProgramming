@@ -2,14 +2,13 @@ package roman_numerals
 
 import (
 	"fmt"
-	"log"
 	"testing"
 	"testing/quick"
 )
 
 func TestRomanNumerals(t *testing.T) {
 	cases := []struct {
-		Arabic int
+		Arabic uint16
 		Roman  string
 	}{
 		{Arabic: 1, Roman: "I"},
@@ -53,7 +52,7 @@ func TestRomanNumerals(t *testing.T) {
 }
 func TestConvertToArabic(t *testing.T) {
 	cases := []struct {
-		Arabic int
+		Arabic uint16
 		Roman  string
 	}{
 		{Arabic: 1, Roman: "I"},
@@ -97,16 +96,18 @@ func TestConvertToArabic(t *testing.T) {
 }
 
 func TestPropertiesOfConversion(t *testing.T) {
-	assertion := func(arabic int) bool {
-		if arabic < 0 || arabic > 3999 {
-			log.Println(arabic)
+	assertion := func(arabic uint16) bool {
+		if arabic > 3999 {
 			return true
 		}
+		t.Log("testing", arabic)
 		roman := ConvertToRoman(arabic)
 		fromRoman := ConvertToArabic(roman)
 		return fromRoman == arabic
 	}
-	if err := quick.Check(assertion, nil); err != nil {
+	if err := quick.Check(assertion, &quick.Config{
+		MaxCount: 1000,
+	}); err != nil {
 		t.Error("failed checks", err)
 	}
 }
