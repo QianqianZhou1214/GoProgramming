@@ -1,9 +1,7 @@
 package roman_numerals
 
 import (
-	"fmt"
 	"strings"
-	"testing"
 )
 
 type RomanNumeral struct {
@@ -59,4 +57,8 @@ func ConvertToRoman(arabic int) string {
 		return result.String()
 
 	*/
+}
+
+func CovertToArabic(roman string) int {
+	return 0
 }
