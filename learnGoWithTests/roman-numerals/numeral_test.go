@@ -3,6 +3,7 @@ package roman_numerals
 import (
 	"fmt"
 	"testing"
+	"testing/quick"
 )
 
 func TestRomanNumerals(t *testing.T) {
@@ -93,3 +94,16 @@ func TestConvertToArabic(t *testing.T) {
 		})
 	}
 }
+
+func TestPropertiesOfCoversion(t *testing.T) {
+	assertion := func(arabic int) bool {
+		roman := ConvertToRoman(arabic)
+		fromRoman := ConvertToArabic(roman)
+		return fromRoman == arabic
+	}
+	if err := quick.Check(assertion, nil); err != nil {
+		t.Error("failed checks", err)
+	}
+}
+
+//quick.Check() looks for any function that returns bool. It calls this func repeatedly with arbitrary values for each args.
