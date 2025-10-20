@@ -95,7 +95,7 @@ func TestConvertToArabic(t *testing.T) {
 	}
 }
 
-func TestPropertiesOfCoversion(t *testing.T) {
+func TestPropertiesOfConversion(t *testing.T) {
 	assertion := func(arabic int) bool {
 		roman := ConvertToRoman(arabic)
 		fromRoman := ConvertToArabic(roman)
