@@ -59,6 +59,6 @@ func ConvertToRoman(arabic int) string {
 	*/
 }
 
-func CovertToArabic(roman string) int {
+func ConvertToArabic(roman string) int {
 	return 0
 }
