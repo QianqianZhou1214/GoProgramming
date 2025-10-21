@@ -13,6 +13,6 @@ func SecondHand(t time.Time) Point {
 	return Point{150, 60}
 }
 
-func SecondHandInRadians(t time.Time) float64 {
+func secondsInRadians(t time.Time) float64 {
 	return math.Pi
 }
