@@ -10,7 +10,7 @@ import (
 
 func main() {
 	t := time.Now()
-	sh := clockface.SecondHand(t)
+	sh := clockface.secondHand(t)
 	io.WriteString(os.Stdout, svgStart)
 	io.WriteString(os.Stdout, bezel)
 	io.WriteString(os.Stdout, secondHandTag(sh))
