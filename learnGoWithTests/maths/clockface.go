@@ -40,7 +40,7 @@ func minuteHandPoint(t time.Time) Point {
 }
 
 func angleToPoint(angle float64) Point {
-	x := math.Cos(angle)
-	y := math.Sin(angle)
+	x := math.Sin(angle)
+	y := math.Cos(angle)
 	return Point{x, y}
 }
