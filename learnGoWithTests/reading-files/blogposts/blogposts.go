@@ -1,10 +1,12 @@
 package blogposts
 
 import (
+	"errors"
 	"io/fs"
 )
 
 type Post struct {
+	Title string
 }
 
 // NewPostsFromFS cannot use fstest.MapFS here as param because its a concrete impl not an abstract interface
@@ -22,4 +24,11 @@ func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
 		posts = append(posts, Post{})
 	}
 	return posts, nil
+}
+
+type StubFailingFS struct {
+}
+
+func (s StubFailingFS) Open(name string) (fs.File, error) {
+	return nil, errors.New("Oh no, I always fail")
 }
