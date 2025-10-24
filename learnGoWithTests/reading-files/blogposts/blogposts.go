@@ -7,6 +7,7 @@ import (
 type Post struct {
 }
 
+// NewPostsFromFS cannot use fstest.MapFS here as param because its a concrete impl not an abstract interface
 func NewPostsFromFS(fileSystem fs.FS) []Post {
 	dir, _ := fs.ReadDir(fileSystem, ".")
 	//fs.ReadDir reads a dir inside given fs.FS returning []DirEntry
