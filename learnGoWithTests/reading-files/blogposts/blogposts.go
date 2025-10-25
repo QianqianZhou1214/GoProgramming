@@ -16,7 +16,7 @@ func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
 	//fs.ReadDir reads a dir inside given fs.FS returning []DirEntry
 
 	if err != nil {
-		return nil, err
+		return nil, err //todo: needs clarification, should we totally fail if one file fails
 	}
 	var posts []Post
 
@@ -27,8 +27,8 @@ func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
 	return posts, nil
 }
 
-func getPost(fileSystem fs.FS, f fs.DirEntry) (Post, error) {
-	postFile, err := fileSystem.Open(f.Name())
+func getPost(fileSystem fs.FS, fileName string) (Post, error) {
+	postFile, err := fileSystem.Open(fileName)
 	// fs.FS gives us a way(.Open()) of opening file within it by name
 	if err != nil {
 		return Post{}, err
