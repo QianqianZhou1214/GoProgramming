@@ -11,6 +11,7 @@ import (
 type Post struct {
 	Title       string
 	Description string
+	Tags        []string
 }
 
 // NewPostsFromFS cannot use fstest.MapFS here as param because its a concrete impl not an abstract interface
@@ -47,6 +48,7 @@ func getPost(fileSystem fs.FS, fileName string) (Post, error) {
 const (
 	titleSeparator       = "Title: "
 	descriptionSeparator = "Description: "
+	tagsSeparator        = "Tags: "
 )
 
 // not coupling to an fs.File, but using io.Reader
@@ -60,6 +62,7 @@ func newPost(postFile io.Reader) (Post, error) {
 	return Post{
 		Title:       readMetaLine(titleSeparator),
 		Description: readMetaLine(descriptionSeparator),
+		Tags:        strings.Split(readMetaLine(tagsSeparator), ", "),
 	}, nil
 
 	/*
