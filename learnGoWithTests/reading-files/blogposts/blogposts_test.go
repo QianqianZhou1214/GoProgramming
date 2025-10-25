@@ -14,6 +14,7 @@ Description: Description 1`
 		secondBody = `Title: Post 2
 Description: Description 2`
 	)
+
 	fs := fstest.MapFS{
 		//A MapFS is a simple in-memory file system for use in tests,
 		//represented as a map from path names (arguments to Open) to information
