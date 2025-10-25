@@ -37,7 +37,8 @@ func getPost(fileSystem fs.FS, f fs.DirEntry) (Post, error) {
 	return newPost(postFile)
 }
 
-func newPost(postFile fs.File) (Post, error) {
+// not coupling to an fs.File, but using io.Reader
+func newPost(postFile io.Reader) (Post, error) {
 	postData, err := io.ReadAll(postFile)
 	if err != nil {
 		return Post{}, err
