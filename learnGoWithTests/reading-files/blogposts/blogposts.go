@@ -43,6 +43,11 @@ func getPost(fileSystem fs.FS, fileName string) (Post, error) {
 	return newPost(postFile)
 }
 
+const (
+	titleSeparator       = "Title: "
+	descriptionSeparator = "Description: "
+)
+
 // not coupling to an fs.File, but using io.Reader
 func newPost(postFile io.Reader) (Post, error) {
 	scanner := bufio.NewScanner(postFile)
@@ -51,8 +56,8 @@ func newPost(postFile io.Reader) (Post, error) {
 		scanner.Scan()
 		return scanner.Text()
 	}
-	title := readLine()[7:]
-	description := readLine()[13:]
+	title := readLine()[len(titleSeparator):]
+	description := readLine()[len(descriptionSeparator):]
 
 	return Post{Title: title, Description: description}, nil
 	/*
