@@ -26,9 +26,6 @@ func TestNewBlogPosts(t *testing.T) {
 		t.Errorf("got %d posts, wanted %d posts", len(posts), len(fs))
 	}
 
-	got := posts[0]
-	want := blogposts.Post{Title: "Post 1"}
-
 	assertPost(t, posts[0], blogposts.Post{Title: "Post 1"})
 }
 
