@@ -7,7 +7,8 @@ import (
 )
 
 type Post struct {
-	Title string
+	Title       string
+	Description string
 }
 
 // NewPostsFromFS cannot use fstest.MapFS here as param because its a concrete impl not an abstract interface
@@ -21,8 +22,12 @@ func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
 	var posts []Post
 
 	//iterating over the entries, create a post for each one and return the slice
-	for range dir {
-		posts = append(posts, Post{})
+	for _, f := range dir {
+		post, err := getPost(fileSystem, f.Name())
+		if err != nil {
+			return nil, err
+		}
+		posts = append(posts, post)
 	}
 	return posts, nil
 }
