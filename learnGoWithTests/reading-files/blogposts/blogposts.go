@@ -1,6 +1,7 @@
 package blogposts
 
 import (
+	"bufio"
 	"errors"
 	"io"
 	"io/fs"
@@ -44,13 +45,25 @@ func getPost(fileSystem fs.FS, fileName string) (Post, error) {
 
 // not coupling to an fs.File, but using io.Reader
 func newPost(postFile io.Reader) (Post, error) {
-	postData, err := io.ReadAll(postFile)
-	if err != nil {
-		return Post{}, err
-	}
+	scanner := bufio.NewScanner(postFile)
 
-	post := Post{Title: string(postData)[7:]}
-	return post, nil
+	scanner.Scan()
+	titleLine := scanner.Text()
+
+	scanner.Scan()
+	descriptionLine := scanner.Text()
+
+	return Post{Title: titleLine[7:], Description: descriptionLine[13:]}, nil
+	/*
+		postData, err := io.ReadAll(postFile)
+		if err != nil {
+			return Post{}, err
+		}
+
+		post := Post{Title: string(postData)[7:]}
+		return post, nil
+
+	*/
 }
 
 type StubFailingFS struct {
