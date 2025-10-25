@@ -68,7 +68,9 @@ func newPost(postFile io.Reader) (Post, error) {
 
 	scanner.Scan() // ignore a line
 
+	// scanner.Scan() returns a bool which indicates whether there is more data to scan
 	buf := bytes.Buffer{}
+	// for loop to scan through the end
 	for scanner.Scan() {
 		fmt.Fprintln(&buf, scanner.Text())
 	}
