@@ -5,7 +5,7 @@ import (
 	blogrenderer "learnGoWithTests/templating"
 	"testing"
 
-	_ "github.com/approvals/go-approval-tests"
+	"github.com/approvals/go-approval-tests"
 )
 
 func TestRender(t *testing.T) {
