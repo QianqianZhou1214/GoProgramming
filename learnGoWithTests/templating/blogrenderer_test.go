@@ -2,6 +2,7 @@ package blogrenderer_test
 
 import (
 	"bytes"
+	blogrenderer "learnGoWithTests/templating"
 	"testing"
 )
 
