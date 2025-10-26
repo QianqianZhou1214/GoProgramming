@@ -1,7 +1,9 @@
 package generics
 
-type StackOfInts struct {
-	values []int
+type StackOfStrings = Stack
+type StackOfInts = Stack
+type Stack struct {
+	values []interface{}
 }
 
 func (s StackOfInts) Push(value int) {
