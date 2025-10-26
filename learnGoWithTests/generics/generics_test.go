@@ -15,14 +15,14 @@ func TestAssertFunctions(t *testing.T) {
 	// AssertEqual(t, 1, "1") // uncommented to see the error
 }
 
-func AssertEqualC(t *testing.T, got, want T) {
+func AssertEqual(t *testing.T, got, want T) {
 	t.Helper()
 	if got != want {
 		t.Errorf("got %d, want %d", got, want)
 	}
 }
 
-func AssertNotEqualV(t *testing.T, got, want T) {
+func AssertNotEqual(t *testing.T, got, want T) {
 	t.Helper()
 	if got == want {
 		t.Errorf("did not want %d", got)
